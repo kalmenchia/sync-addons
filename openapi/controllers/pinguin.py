@@ -368,7 +368,7 @@ def route(*args, **kwargs):
         @api_route(*args, **kwargs)
         @functools.wraps(controller_method)
         def controller_method_wrapper(*iargs, **ikwargs):
-
+            ikwargs['model'] = ikwargs['model'].replace("\n","") #E-GlobalSCM(kalmen) added here to remove the extra "\n"
             auth_header = get_auth_header(
                 request.httprequest.headers, raise_exception=True
             )
